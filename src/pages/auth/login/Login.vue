@@ -72,15 +72,17 @@ export default {
         const jwt = res.data.data.token
         const userInfo = res.data.data
 
-        this.$store.commit("SET_TOKEN",jwt)
-        this.$store.commit("SET_USERINFO",userInfo)
+        if(res.data.code===0){
+          alert(res.data.message)
+        }else {
+          alert('登录成功!');
+          this.$store.commit("SET_TOKEN",jwt)
+          this.$store.commit("SET_USERINFO",userInfo)
 
+        }
       })
-
-
-      console.log(this.$store.getters.getUser)
-
       this.$router.push({ name: 'dashboard' })
+      // console.log(this.$store.getters.getUser)
     }       // this.$router.push({ name: 'dashboard' })
   }
 

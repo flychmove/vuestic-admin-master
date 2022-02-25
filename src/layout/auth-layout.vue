@@ -3,7 +3,7 @@
     <div class="flex xs12 pa-3 flex-center">
       <router-link class="py-5 flex-center" to="/">
 <!--        <vuestic-logo height="32"/>-->
-        <img class="mlogo" src="https://pic.rmb.bdstatic.com/bjh/13a928b8ec3c2b883adc492f8948f11b.jpeg@h_1280">
+        <img class="mlogo" src="file://E:/wjc/图片/前端logo.png">
       </router-link>
     </div>
 

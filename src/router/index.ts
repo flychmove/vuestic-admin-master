@@ -73,14 +73,14 @@ const routes: Array<RouteRecordRaw> = [
         path: 'maps',
         component: RouteViewComponent,
         children: [
-          {
-            name: 'google-maps',
-            path: 'google-maps',
-            component: () => import('@/pages/admin/maps/google-maps/GoogleMapsPage.vue'),
-            meta: {
-              wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
-            },
-          },
+          // {
+          //   name: 'google-maps',
+          //   path: 'google-maps',
+          //   component: () => import('@/pages/admin/maps/google-maps/GoogleMapsPage.vue'),
+          //   meta: {
+          //     wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Maps',
+          //   },
+          // },
           {
             name: 'yandex-maps',
             path: 'yandex-maps',
