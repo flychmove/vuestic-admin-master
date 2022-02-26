@@ -59,6 +59,11 @@ const routes: Array<RouteRecordRaw> = [
             },
           },
           {
+            name: 'form-wizard',
+            path: 'form-wizard',
+            component: () => import('@/pages/admin/forms/form-wizard/FormWizard.vue'),
+          },
+          {
             name: 'medium-editor',
             path: 'medium-editor',
             component: () => import('@/pages/admin/forms/medium-editor/MediumEditor.vue'),
