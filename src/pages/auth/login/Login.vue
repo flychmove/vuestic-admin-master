@@ -19,10 +19,10 @@
     />
 
 
-<!--    <div class="auth-layout__options d-flex align&#45;&#45;center justify&#45;&#45;space-between">-->
-<!--      <va-checkbox v-model="keepLoggedIn" class="mb-0" :label="$t('记住我')"/>-->
-<!--      <router-link class="ml-1 link" :to="{name: 'recover-password'}">{{$t('auth.recover_password')}}</router-link>-->
-<!--    </div>-->
+    <!--    <div class="auth-layout__options d-flex align&#45;&#45;center justify&#45;&#45;space-between">-->
+    <!--      <va-checkbox v-model="keepLoggedIn" class="mb-0" :label="$t('记住我')"/>-->
+    <!--      <router-link class="ml-1 link" :to="{name: 'recover-password'}">{{$t('auth.recover_password')}}</router-link>-->
+    <!--    </div>-->
 
     <div class="d-flex justify--center mt-3">
       <va-button @click="onsubmit" class="my-0">{{ $t('登录') }}</va-button>
@@ -59,22 +59,33 @@ export default {
         return
       }
 
-      alert('submit!');
+      //alert('submit!');
       this.axios.post("http://localhost:8081/login", this.ruleForm).then(res =>{
         console.log(res)
-        const jwt = res.data.data.token
-        const userInfo = res.data.data
-
-        if(res.data.code===0){
-          alert(res.data.message)
-        }else {
-          alert('登录成功!');
-          this.$store.commit("SET_TOKEN",jwt)
-          this.$store.commit("SET_USERINFO",userInfo)
-
+        console.log(res.data)
+        console.log(res.data.code)
+        if(res.status===500){
+          alert('用户不存在!');
         }
+      else {
+          const code = res.data.code;
+          if(code===200){
+            alert('登录成功!');
+            const jwt = res.data.data.token
+            const userInfo = res.data.data
+            this.$store.commit("SET_TOKEN",jwt)
+            this.$store.commit("SET_USERINFO",userInfo)
+            this.$router.push({ name: 'dashboard' })
+
+          }
+
+          else{
+            alert(res.data.message)
+          }
+        }
+
       })
-      this.$router.push({ name: 'dashboard' })
+
       // console.log(this.$store.getters.getUser)
     }       // this.$router.push({ name: 'dashboard' })
   }
