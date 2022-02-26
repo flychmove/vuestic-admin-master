@@ -9,13 +9,6 @@
       :error-messages="usernameErrors"
     />
 
-<!--    <va-input-->
-<!--      class="mb-4"-->
-<!--      v-model="value"-->
-<!--      label="Name"-->
-<!--      placeholder="Label"-->
-<!--    />-->
-
     <va-input
       class="mb-3"
       v-model="ruleForm.password"
@@ -27,7 +20,7 @@
 
 
 <!--    <div class="auth-layout__options d-flex align&#45;&#45;center justify&#45;&#45;space-between">-->
-<!--      <va-checkbox v-model="keepLoggedIn" class="mb-0" :label="$t('auth.keep_logged_in')"/>-->
+<!--      <va-checkbox v-model="keepLoggedIn" class="mb-0" :label="$t('记住我')"/>-->
 <!--      <router-link class="ml-1 link" :to="{name: 'recover-password'}">{{$t('auth.recover_password')}}</router-link>-->
 <!--    </div>-->
 

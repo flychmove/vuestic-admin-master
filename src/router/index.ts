@@ -155,7 +155,7 @@ const routes: Array<RouteRecordRaw> = [
         //   },
         // ],
       },
-       UIRoute,
+      UIRoute,
     ]
   },
 
