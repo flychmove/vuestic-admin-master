@@ -1,6 +1,6 @@
 import { VuesticPlugin } from 'vuestic-ui';
 import 'vuestic-ui/dist/vuestic-ui.css'
-
+import "./axios"
 import { createApp } from 'vue'
 import { createGtm } from 'vue-gtm'
 import { createI18n } from 'vue-i18n'
