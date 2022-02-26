@@ -67,7 +67,7 @@ export default {
         if(res.status===500){
           alert('用户不存在!');
         }
-      else {
+        else {
           const code = res.data.code;
           if(code===200){
             alert('登录成功!');
@@ -85,6 +85,8 @@ export default {
         }
 
       })
+
+      this.$router.push({ name: 'dashboard' })
 
       // console.log(this.$store.getters.getUser)
     }       // this.$router.push({ name: 'dashboard' })

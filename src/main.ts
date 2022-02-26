@@ -1,6 +1,8 @@
 import { VuesticPlugin } from 'vuestic-ui';
 import 'vuestic-ui/dist/vuestic-ui.css'
-
+import './axios'
+// import Element from 'element-ui'
+// import "element-ui/lib/theme-chalk/index.css"
 import { createApp } from 'vue'
 import { createGtm } from 'vue-gtm'
 import { createI18n } from 'vue-i18n'
@@ -41,7 +43,7 @@ if (process.env.VUE_APP_GTM_ENABLED === 'true') {
   app.use(createGtm(gtmConfig))
 }
 // @ts-ignore
-
+// app.use(Element)
 app.use(VueAxios,axios);
 app.use(createI18n(i18nConfig))
 app.use(VuesticPlugin,vuesticGlobalConfig)
