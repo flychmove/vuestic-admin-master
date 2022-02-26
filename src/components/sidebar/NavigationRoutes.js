@@ -77,7 +77,7 @@ export default {
       // ],
     },
     {
-      name: 'ui',
+      name: 'pages',
       displayName: '人事管理',
       meta: {
         icon: 'vuestic-iconset-ui-elements',

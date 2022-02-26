@@ -25,25 +25,25 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'statistics',
         path: 'statistics',
-        component: RouteViewComponent,
-        children: [
-          {
-            name: 'charts',
-            path: 'charts',
-            component: () => import('@/pages/admin/statistics/charts/Charts.vue'),
-            meta: {
-              wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Charts',
-            },
-          },
-          {
-            name: 'progress-bars',
-            path: 'progress-bars',
-            component: () => import('@/pages/admin/statistics/progress-bars/ProgressBars.vue'),
-            meta: {
-              wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Progress-Bars',
-            },
-          },
-        ],
+        component: () => import('@/pages/admin/statistics/order_management/order_management.vue'),
+        // children: [
+        //   {
+        //     name: 'charts',
+        //     path: 'charts',
+        //     component: () => import('@/pages/admin/statistics/charts/Charts.vue'),
+        //     meta: {
+        //       wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Charts',
+        //     },
+        //   },
+        //   {
+        //     name: 'progress-bars',
+        //     path: 'progress-bars',
+        //     component: () => import('@/pages/admin/statistics/progress-bars/ProgressBars.vue'),
+        //     meta: {
+        //       wikiLink: 'https://github.com/epicmaxco/vuestic-admin/wiki/Progress-Bars',
+        //     },
+        //   },
+        // ],
       },
       {
         name: 'forms',
@@ -141,21 +141,21 @@ const routes: Array<RouteRecordRaw> = [
       {
         name: 'pages',
         path: 'pages',
-        component: RouteViewComponent,
-        children: [
-          {
-            name: '404-pages',
-            path: '404-pages',
-            component: () => import('@/pages/admin/pages/404PagesPage.vue'),
-          },
-          {
-            name: 'faq',
-            path: 'faq',
-            component: () => import('@/pages/admin/pages/FaqPage.vue'),
-          },
-        ],
+        component: () => import('@/pages/admin/pages/personel_management/personel_management.vue'),
+        // children: [
+        //   {
+        //     name: '404-pages',
+        //     path: '404-pages',
+        //     component: () => import('@/pages/admin/pages/404PagesPage.vue'),
+        //   },
+        //   {
+        //     name: 'faq',
+        //     path: 'faq',
+        //     component: () => import('@/pages/admin/pages/FaqPage.vue'),
+        //   },
+        // ],
       },
-      UIRoute,
+       UIRoute,
     ]
   },
 

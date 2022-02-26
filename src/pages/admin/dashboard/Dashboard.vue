@@ -14,25 +14,25 @@
 </template>
 
 <script>
-import DashboardCharts from './DashboardCharts'
-import DashboardInfoBlock from './DashboardInfoBlock'
-import DashboardTabs from './DashboardTabs'
-import DashboardMap from './DashboardMap'
+  import DashboardCharts from './DashboardCharts'
+  import DashboardInfoBlock from './DashboardInfoBlock'
+  import DashboardTabs from './DashboardTabs'
+  import DashboardMap from './DashboardMap'
 
-export default {
-  name: 'dashboard',
-  components: {
-    DashboardCharts,
-    DashboardInfoBlock,
-    DashboardTabs,
-    DashboardMap,
-  },
-  methods: {
-    addAddressToMap ({ city, country }) {
-      this.$refs.dashboardMap.addAddress({ city: city.text, country })
+  export default {
+    name: 'dashboard',
+    components: {
+      DashboardCharts,
+      DashboardInfoBlock,
+      DashboardTabs,
+      DashboardMap,
     },
-  },
-}
+    methods: {
+      addAddressToMap ({ city, country }) {
+        this.$refs.dashboardMap.addAddress({ city: city.text, country })
+      },
+    },
+  }
 </script>
 
 <style lang="scss">
@@ -52,3 +52,7 @@ export default {
     }
   }
 </style>
+
+
+
+
