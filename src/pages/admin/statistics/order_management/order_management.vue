@@ -1,33 +1,68 @@
 <template>
   <div class="va-table-responsive">
-    <table class="va-table va-table--clickable">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Phone</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in users" :key="user.id">
-          <td>{{user.name}}</td>
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.phone}}</td>
-<!--          <td>-->
-<!--            <va-badge-->
-<!--              :text="user.status"-->
-<!--              :color="user.status"-->
+    <!--    卡片样式-->
+    <div class="flex md6 lg4">
+      <va-card :bordered="false">
+        <va-card-title>Bordered false</va-card-title>
+        <va-card-content >
+
+<!--          <div class="row">-->
+<!--            <va-input-->
+<!--              class="flex mb-2 md3"-->
+<!--              type="number"-->
+<!--              placeholder="Items..."-->
+<!--              label="Items per page"-->
+<!--              v-model.number="perPage"-->
 <!--            />-->
-<!--          </td>-->
-        </tr>
-      </tbody>
-    </table>
+
+<!--            <va-input-->
+<!--              class="flex mb-2 md3"-->
+<!--              type="number"-->
+<!--              placeholder="Page..."-->
+<!--              label="Current page"-->
+<!--              v-model.number="currentPage"-->
+<!--            />-->
+
+<!--            <va-input-->
+<!--              class="flex mb-2 md3"-->
+<!--              placeholder="Filter..."-->
+<!--              v-model="filter"-->
+<!--            />-->
+<!--          </div>-->
+
+          <table class="va-table va-table--clickable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Phone</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="user in users" :key="user.id">
+                <td>{{user.name}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
+              <!--          <td>-->
+              <!--            <va-badge-->
+              <!--              :text="user.status"-->
+              <!--              :color="user.status"-->
+              <!--            />-->
+              <!--          </td>-->
+              </tr>
+            </tbody>
+          </table>
+        </va-card-content>
+      </va-card>
+    </div>
+
   </div>
 </template>
 
 <script lang="ts">
+
   // import users from 'vuestic-ui/src/data/Users'
 
   export default {
@@ -70,16 +105,25 @@
         },
       ]
       return {
-        users : users
+        users : users,
+        items: users,
+
+        perPage: 3,
+        currentPage: 1,
+        filter: '',
+        filtered: users,
         // users: users.slice(0, 4),
       }
     },
+
   }
 </script>
 
 <style lang="scss" scoped>
   .va-table-responsive {
     overflow: auto;
-    width: 2000px;
+
+    text-align: center;
+    text-align: -webkit-center;
   }
 </style>
