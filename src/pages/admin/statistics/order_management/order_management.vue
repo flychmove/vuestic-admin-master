@@ -6,29 +6,29 @@
         <va-card-title>Bordered false</va-card-title>
         <va-card-content >
 
-<!--          <div class="row">-->
-<!--            <va-input-->
-<!--              class="flex mb-2 md3"-->
-<!--              type="number"-->
-<!--              placeholder="Items..."-->
-<!--              label="Items per page"-->
-<!--              v-model.number="perPage"-->
-<!--            />-->
+          <!--          <div class="row">-->
+          <!--            <va-input-->
+          <!--              class="flex mb-2 md3"-->
+          <!--              type="number"-->
+          <!--              placeholder="Items..."-->
+          <!--              label="Items per page"-->
+          <!--              v-model.number="perPage"-->
+          <!--            />-->
 
-<!--            <va-input-->
-<!--              class="flex mb-2 md3"-->
-<!--              type="number"-->
-<!--              placeholder="Page..."-->
-<!--              label="Current page"-->
-<!--              v-model.number="currentPage"-->
-<!--            />-->
+          <!--            <va-input-->
+          <!--              class="flex mb-2 md3"-->
+          <!--              type="number"-->
+          <!--              placeholder="Page..."-->
+          <!--              label="Current page"-->
+          <!--              v-model.number="currentPage"-->
+          <!--            />-->
 
-<!--            <va-input-->
-<!--              class="flex mb-2 md3"-->
-<!--              placeholder="Filter..."-->
-<!--              v-model="filter"-->
-<!--            />-->
-<!--          </div>-->
+          <!--            <va-input-->
+          <!--              class="flex mb-2 md3"-->
+          <!--              placeholder="Filter..."-->
+          <!--              v-model="filter"-->
+          <!--            />-->
+          <!--          </div>-->
 
           <table class="va-table va-table--clickable">
             <thead>
@@ -115,6 +115,9 @@
         // users: users.slice(0, 4),
       }
     },
+
+
+
 
   }
 </script>

@@ -4,16 +4,16 @@
       <thead>
         <tr>
           <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
+          <th>Avatar</th>
+          <th>Status</th>
           <th>Phone</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
           <td>{{user.name}}</td>
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
+          <td>{{user.avatar}}</td>
+          <td>{{user.status}}</td>
           <td>{{user.phone}}</td>
         <!--          <td>-->
         <!--            <va-badge-->
@@ -27,53 +27,79 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
   // import users from 'vuestic-ui/src/data/Users'
 
   export default {
     data () {
-      const users = [
-        {
-          id: 1,
-          name: 'WJC',
-          username: 'Bret',
-          email: 'Sincere@april.biz',
-          phone: '1-770-736-8031 x56442',
-        },
-        {
-          id: 2,
-          name: 'Ervin Howell',
-          username: 'Antonette',
-          email: 'Shanna@melissa.tv',
-          phone: '010-692-6593 x09125',
-        },
-        {
-          id: 3,
-          name: 'Clementine Bauch',
-          username: 'Samantha',
-          email: 'Nathan@yesenia.net',
-          phone: '1-463-123-4447',
-        },
-        {
-          id: 4,
-          name: 'Patricia Lebsack',
-          username: 'Karianne',
-          email: 'Julianne.OConner@kory.org',
-          phone: '493-170-9623 x156',
-        },
-        {
-          id: 5,
-          name: 'Chelsey Dietrich',
-          username: 'Kamren',
-          email: 'Lucio_Hettinger@annie.ca',
-          phone: '(254)954-1289',
-        },
-      ]
+      // const users = [
+      //   {
+      //     id: 1,
+      //     name: "付洋",
+      //     password: "12345678",
+      //     status: 1,
+      //     avatar: "",
+      //     phone: null
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'Ervin Howell',
+      //     password: 'Antonette',
+      //     status: 'Shanna@melissa.tv',
+      //     avatar: '010-692-6593 x09125',
+      //     phone: null
+      //   },
+      //   {
+      //     id: 3,
+      //     name: 'Ervin Howell',
+      //     password: 'Antonette',
+      //     status: 'Shanna@melissa.tv',
+      //     avatar: '010-692-6593 x09125',
+      //     phone: null
+      //   },
+      //   {
+      //     id: 4,
+      //     name: 'Ervin Howell',
+      //     password: 'Antonette',
+      //     status: 'Shanna@melissa.tv',
+      //     avatar: '010-692-6593 x09125',
+      //     phone: null
+      //   },
+      //   {
+      //     id: 5,
+      //     name: 'Ervin Howell',
+      //     password: 'Antonette',
+      //     status: 'Shanna@melissa.tv',
+      //     avatar: '010-692-6593 x09125',
+      //     phone: null
+      //   },
+      // ]
       return {
-        users : users
+        // users : users
         // users: users.slice(0, 4),
+        // user:{
+        //   id:null,
+        //   name:"",
+        //   password:"",
+        //   status:null,
+        //   avatar:"",
+        //   phone:""
+        // },
+        users:{}
       }
     },
+    methods:{
+      getAll(){
+        this.axios.get("http://localhost:8081/user/list").then(res =>{
+          console.log(res.data)
+          this.users=res.data.message.data
+        })
+      }
+    },
+    created() {
+      this.getAll();
+    },
+
   }
 </script>
 
