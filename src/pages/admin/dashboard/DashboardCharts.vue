@@ -1,7 +1,7 @@
 <template>
   <div class="row row-equal">
     <div class="flex xs12 xl6">
-      <va-card v-if="lineChartData">
+      <va-card v-if="lineChartData" >
         <va-card-title>
           <h1>{{ $t('dashboard.charts.trendyTrends') }}</h1>
           <div class="mr-0 text-right">

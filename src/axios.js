@@ -22,6 +22,7 @@ axios.interceptors.response.use(response=>{
       return response
     }else {//密码输入错误进入
       // Element.Message.error('错了哦，这是一条错误消息',{duration : 1*1000});
+      alert("密码错误！")
       return Promise.reject(response.data.msg)
     }
 

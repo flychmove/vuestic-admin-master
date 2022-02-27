@@ -76,7 +76,6 @@ export default {
             this.$store.commit("SET_TOKEN",jwt)
             this.$store.commit("SET_USERINFO",userInfo)
             this.$router.push({ name: 'dashboard' })
-
           }
 
           else{
@@ -86,7 +85,6 @@ export default {
 
       })
 
-      this.$router.push({ name: 'dashboard' })
 
       // console.log(this.$store.getters.getUser)
     }       // this.$router.push({ name: 'dashboard' })

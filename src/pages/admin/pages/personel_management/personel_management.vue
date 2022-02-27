@@ -24,6 +24,7 @@
         </tr>
       </tbody>
     </table>
+
   </div>
 </template>
 
@@ -92,7 +93,7 @@
       getAll(){
         this.axios.get("http://localhost:8081/user/list").then(res =>{
           console.log(res.data)
-          this.users=res.data.message.data
+          this.users=res.data.data
         })
       }
     },

@@ -38,7 +38,7 @@ export default {
       disabled: true,
       children: [
         {
-          name: 'form-elements',
+          name: 'form-wizard',
           displayName: '推荐畅销菜',
         },
         {
