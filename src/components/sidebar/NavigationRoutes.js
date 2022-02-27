@@ -30,7 +30,7 @@ export default {
       // ],
     },
     {
-      name: 'forms',
+      name: 'form',
       displayName: '菜品管理',
       meta: {
         icon: 'vuestic-iconset-forms',
