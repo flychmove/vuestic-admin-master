@@ -22,7 +22,7 @@
             <p style="width: 2rem">类别</p>
           </template>
         </va-select>
-        <va-checkbox class="mt-4" v-model="isHot" :label="label" />
+        <va-checkbox class="mt-4" v-model="isHot" :label="label"/>
         <va-input
           class="md-1"
           v-model="price"
@@ -46,6 +46,11 @@
         </template>
       </va-input>
     </div>
+
+    <div style="margin-top: 10px">
+      <va-button class="mr-4" @click="cancelMeal">取消</va-button>
+      <va-button class="mr-4" @click="sureMeal">确定</va-button>
+    </div>
   </div>
 </template>
 
@@ -64,6 +69,12 @@
         mealDetails: '',
       }
     },
+    methods: {
+      cancelMeal() {
+      },
+      sureMeal() {
+      }
+    }
   }
 </script>
 

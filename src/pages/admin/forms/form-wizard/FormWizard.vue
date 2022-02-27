@@ -25,7 +25,7 @@
     </va-affix>
 
     <va-modal v-model="addMeal" :overlay="false"
-              ok-text="确定" cancel-text="取消"
+              hide-default-actions
               no-outside-dismiss size="large">
       <meal-detail/>
     </va-modal>
@@ -36,7 +36,7 @@
           <va-image src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp"/>
           <va-card-title>
             <va-modal v-model="mealDetail" :overlay="false"
-                      ok-text="确定" cancel-text="取消"
+                      hide-default-actions
                       no-outside-dismiss size="large">
               <meal-detail/>
             </va-modal>
@@ -49,7 +49,7 @@
           <va-image src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp"
                     @click="mealDetail = !mealDetail"/>
           <va-modal v-model="mealDetail" :overlay="false"
-                    ok-text="确定" cancel-text="取消"
+                    hide-default-actions
                     no-outside-dismiss size="large">
             <meal-detail/>
           </va-modal>
