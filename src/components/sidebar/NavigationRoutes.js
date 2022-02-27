@@ -30,7 +30,7 @@ export default {
       // ],
     },
     {
-      name: 'forms',
+      name: 'form',
       displayName: '菜品管理',
       meta: {
         icon: 'vuestic-iconset-forms',
@@ -42,11 +42,11 @@ export default {
           displayName: '推荐畅销菜',
         },
         {
-          name: 'medium-editor',
+          name: 'form-elements',
           displayName: '热菜',
         },
         {
-          name: 'medium-editor',
+          name: 'form-elements',
           displayName: '凉菜',
         },
         {
