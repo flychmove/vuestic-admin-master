@@ -38,15 +38,15 @@ export default {
       disabled: true,
       children: [
         {
-          name: 'form-elements',
+          name: 'form-wizard',
           displayName: '推荐畅销菜',
         },
         {
-          name: 'medium-editor',
+          name: 'form-elements',
           displayName: '热菜',
         },
         {
-          name: 'medium-editor',
+          name: 'form-elements',
           displayName: '凉菜',
         },
         {
