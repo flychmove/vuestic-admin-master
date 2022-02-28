@@ -90,8 +90,8 @@
     <div class="row row-equal">
       <div class="flex xs12 lg4" v-for="meal in meals" :key="meal.id">
         <va-card>
-          <va-image src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp"
-            @click="onchange(meal.id)"/>
+          <va-image v-bind:src="meal.img"
+                    @click="onchange(meal.id)"/>
           <va-card-title>
             {{meal.name}}
           </va-card-title>
