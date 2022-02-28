@@ -1,27 +1,34 @@
 <template>
   <div class="form-wizard">
     <va-affix :offset-top="95">
-      <div class="search" style="width: 100%;">
-        <va-input
-          class="mb-4"
-          v-model="searchInfo"
-        >
-          <template #prependInner>
-            <va-icon
-              name="search"
-            />
-          </template>
-          <template #appendInner>
-            <va-button style="margin-right: 0;width: 80px"
-              flat @click="onselect">{{ $t('搜索') }}
-            </va-button>
-          </template>
-        </va-input>
-      </div>
 
-      <va-button icon="add" style="margin-right: 0" size="large" class="mb-4"
-        @click="addMeal = !addMeal">
-      </va-button>
+      <div>
+        <va-card style="width: 100%">
+
+          <va-card-content>
+            <div class="search" style="width: 100%;">
+              <va-input
+                class="mb-4"
+                v-model="searchInfo"
+              >
+                <template #prependInner>
+                  <va-icon
+                    name="search"
+                  />
+                </template>
+                <template #appendInner>
+                  <va-button style="margin-right: 0;width: 80px"
+                    flat @click="onselect">{{ $t('搜索') }}
+                  </va-button>
+                </template>
+              </va-input>
+            </div>
+          </va-card-content>
+        </va-card>
+
+        <va-button icon="add" style="margin-right: 0" size="large" class="mb-4"
+          @click="addMeal = !addMeal">
+        </va-button>
     </va-affix>
 
     <va-modal v-model="addMeal" :overlay="false"
@@ -91,7 +98,7 @@
       <div class="flex xs12 lg4" v-for="meal in meals" :key="meal.id">
         <va-card>
           <va-image v-bind:src="meal.img"
-                    @click="onchange(meal.id)"/>
+            @click="onchange(meal.id)"/>
           <va-card-title>
             {{meal.name}}
           </va-card-title>
