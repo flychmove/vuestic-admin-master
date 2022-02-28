@@ -41,8 +41,8 @@ export default {
       usernameErrors: [],
       passwordErrors: [],
       ruleForm: {
-        name: '',
-        password: ''
+        name: '王俊超',
+        password: '1234512'
       }
     }
   },

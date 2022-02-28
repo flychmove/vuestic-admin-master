@@ -49,7 +49,7 @@
 
     <div style="margin-top: 10px">
       <va-button class="mr-4" @click="cancelMeal">取消</va-button>
-      <va-button class="mr-4" @click="sureMeal">确定</va-button>
+      <va-button class="mr-4" @click="submitMeal">确定</va-button>
     </div>
   </div>
 </template>
@@ -71,8 +71,10 @@
     },
     methods: {
       cancelMeal() {
+
       },
-      sureMeal() {
+      submitMeal() {
+        this.axios.post()
       }
     }
   }

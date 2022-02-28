@@ -27,35 +27,22 @@
     <va-modal v-model="addMeal" :overlay="false"
               hide-default-actions
               no-outside-dismiss size="large">
-      <meal-detail/>
+      <add-meal/>
     </va-modal>
 
     <div class="row row-equal">
       <div class="flex xs12 lg4" v-for="meal in meals" :key="meal.id">
         <va-card>
-          <va-image src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp"/>
-          <va-card-title>
-            <va-modal v-model="mealDetail" :overlay="false"
-                      hide-default-actions
-                      no-outside-dismiss size="large">
-              <meal-detail/>
-            </va-modal>
-          </va-card-title>
-        </va-card>
-      </div>
-
-      <div class="flex xs12 lg4">
-        <va-card>
           <va-image src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cover/(1).jpg.webp"
                     @click="mealDetail = !mealDetail"/>
+          <va-card-title>
+            {{meal.name}}
+          </va-card-title>
           <va-modal v-model="mealDetail" :overlay="false"
                     hide-default-actions
                     no-outside-dismiss size="large">
             <meal-detail/>
           </va-modal>
-          <va-card-title>
-            测试部分
-          </va-card-title>
           <va-card-actions align="stretch" vertical>
             <va-button @click="deleteMeal = !deleteMeal">删除</va-button>
             <va-modal v-model="deleteMeal" :message="deleteMessage"
@@ -71,11 +58,13 @@
 
 <script>
   import MealDetail from './MealDetail.vue'
+  import AddMeal from './AddMeal.vue'
 
   export default {
     name: 'form-wizard',
     components: {
       MealDetail,
+      AddMeal,
     },
     data() {
       return {
@@ -100,6 +89,7 @@
           this.meals = res.data.data
         })
       },
+
     },
     created() {
       this.getAll();
@@ -111,6 +101,7 @@
   .row-equal {
     height: 100%;
   }
+
   .flex {
     height: 100%;
   }

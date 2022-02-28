@@ -185,6 +185,7 @@
       },
       handleAddSubmit(e){
         alert('-- 提交成功 --')
+        this.createdItem.password = this.createdItem.phone;
         this.axios.post("http://localhost:8081/user/new",this.createdItem).then(res =>{
           console.log("返回了")
           console.log(res.data)
