@@ -3,7 +3,7 @@
     <va-navbar>
       <template v-slot:left>
         <div class="left">
-          <va-icon-menu-collapsed 
+          <va-icon-menu-collapsed
             @click="isSidebarMinimized = !isSidebarMinimized"
             :class="{ 'x-flip': isSidebarMinimized }"
             class="va-navbar__item"
@@ -11,28 +11,29 @@
           />
           <router-link to="/">
             <vuestic-logo class="logo"/>
-          </router-link>          
+          </router-link>
         </div>
       </template>
       <template v-slot:center>
         <span class="app-navbar__text">
-          {{$t('navbar.messageUs')}}&nbsp;
-          <a
-            href="mailto:hello@epicmax.co"
-            target="_blank"
-            :style="{color: colors.primary}"
-          >
-            hello@epicmax.co
-          </a>
-          <va-button
-            href="https://github.com/epicmaxco/vuestic-admin"
-            color="#000000"
-            class="app-navbar__github-button"
-            icon="github"
-            target="_blank"
-          >
-            {{$t('navbar.repository')}}
-          </va-button>
+          <!--          {{$t('navbar.messageUs')}}-->
+          {{$t('欢迎来到管理员界面！')}}
+          <!--          <a-->
+          <!--            href="mailto:hello@epicmax.co"-->
+          <!--            target="_blank"-->
+          <!--            :style="{color: colors.primary}"-->
+          <!--          >-->
+          <!--            欢迎来到管理员界面！-->
+          <!--          </a>-->
+          <!--          <va-button-->
+          <!--            href="https://github.com/epicmaxco/vuestic-admin"-->
+          <!--            color="#000000"-->
+          <!--            class="app-navbar__github-button"-->
+          <!--            icon="github"-->
+          <!--            target="_blank"-->
+          <!--          >-->
+          <!--            {{$t('navbar.repository')}}-->
+          <!--          </va-button>-->
         </span>
       </template>
       <template #right>
@@ -65,7 +66,7 @@ export default {
       set: (value) => store.commit('updateSidebarCollapsedState', value)
     })
 
-    const userName = computed(() => store.state.userName)
+    const userName = computed(() => store.state.name)
     return {
       colors,
       isSidebarMinimized,

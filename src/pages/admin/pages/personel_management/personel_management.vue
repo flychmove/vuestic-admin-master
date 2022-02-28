@@ -1,151 +1,172 @@
+
+
 <template>
-  <div class="va-table-responsive">
-    <table class="va-table va-table--clickable va-table--striped" >
-      <thead>
-        <tr>
-          <th >Name</th>
-          <th>Status</th>
-          <th>Phone</th>
-          <th width="180px">操作</th>
 
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="user in users" :key="user.id">
-          <td>{{user.name}}</td>
-          <td>{{user.status}}</td>
-          <td>{{user.phone}}</td>
-          <td>
-            <template >
-              <va-button color="warning" size="small" flat icon="edit" @click="onchange(user.id)">修改</va-button>
-              <va-button color="danger" class="mr-4" size="small" flat icon="delete" @click="onDelete(user.id)">删除</va-button>
-            </template>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-<!--    <va-button color="warning" size="small" flat icon="edit" @click="onchange(1)">修改</va-button>-->
-    <va-pagination
-      v-model="value"
-      :pages="20"
-      input
-    />
-    <!--表单弹框-->
-<!--    <va-modal-->
-<!--      message="修改信息"-->
-<!--      v-model="showModal"-->
-<!--    >-->
-<!--      <va-form-->
-<!--        style="width: 300px;"-->
-<!--        tag="form"-->
-<!--        @submit.prevent="handleSubmit"-->
-<!--      >-->
-<!--        <va-input-->
-<!--          v-model="userInfo.usernameInfo"-->
-<!--          label="Username"-->
-<!--        />-->
+  <div >
 
-<!--        <va-input-->
-<!--          class="mt-2"-->
-<!--          v-model="userInfo.userpasswordInfo"-->
-<!--          type="password"-->
-<!--          label="Password"-->
-<!--        />-->
+    <va-card style="width: 100%">
 
-<!--        <va-input-->
-<!--          class="mt-2"-->
-<!--          v-model="userInfo.userstatusInfo"-->
-<!--          label="Status"-->
-<!--        />-->
-
-<!--&lt;!&ndash;        <va-button type="submit" class="mt-2">&ndash;&gt;-->
-<!--&lt;!&ndash;          修改&ndash;&gt;-->
-<!--&lt;!&ndash;        </va-button>&ndash;&gt;-->
-
-<!--      </va-form>-->
-<!--    </va-modal>-->
-
-
-    <va-modal
-      v-model="showModal"
-      hide-default-actions
-      overlay-opacity="0.2"
-    >
-      <template #header>
-        <h2>修改信息</h2>
-      </template>
-      <slot>
-        <div>
-          <va-form
-            style="width: 300px;"
-            tag="form"
+      <va-card-content>
+        <div class="search" style="width: 100%;">
+          <va-input
+            class="mb-4"
+            v-model="searchInfo"
           >
-            <va-input
-              class="mt-3"
-              v-model="userInfo.usernameInfo"
-              label="Username"
-            />
-
-            <va-input
-              class="mt-3"
-              v-model="userInfo.userpasswordInfo"
-              type="password"
-              label="Password"
-            />
-
-            <va-input
-              class="mt-3"
-              v-model="userInfo.userstatusInfo"
-              label="Status"
-            />
-
-          </va-form>
+            <template #prependInner>
+              <va-icon
+                name="search"
+              />
+            </template>
+            <template #appendInner>
+              <va-button style="margin-right: 0;width: 80px"
+                flat @click="onsubmit">{{ $t('搜索') }}
+              </va-button>
+            </template>
+          </va-input>
         </div>
-      </slot>
-      <template #footer>
-        <va-button @click="handleSubmit">
-          提交修改
-        </va-button>
-      </template>
-    </va-modal>
+        <va-data-table :items="users" :columns="columns" striped>
+          <template #headerAppend>
+            <tr class="table-example--slot">
+              <th
+                v-for="key in Object.keys(createdItem)"
+                :key="key"
+                colspan="1"
+              >
+                <va-input
+                  :placeholder="key"
+                  v-model="createdItem[key]"
+                />
+              </th>
+              <th colspan="1">
+                <va-button
+                  @click="handleAddSubmit"
+                  :disabled="!isNewData"
+                >
+                  Add
+                </va-button>
+              </th>
+            </tr>
+          </template>
 
+          <template #cell(actions)="{ rowIndex }">
+            <va-button flat icon="edit" @click="onchange(rowIndex)" />
+            <va-button flat icon="delete" @click="onDelete(users[rowIndex].id)" />
+          </template>
+        </va-data-table>
 
+        <va-modal
+          v-model="showModal"
+          hide-default-actions
+          overlay-opacity="0.2"
+        >
+          <template #header>
+            <h2>修改信息</h2>
+          </template>
+          <slot>
+            <div>
+              <va-form
+                style="width: 300px;"
+                tag="form"
+              >
+                <va-input
+                  class="mt-3"
+                  v-model="userInfo.name"
+                  label="Username"
+                />
+
+                <va-input
+                  class="mt-3"
+                  v-model="userInfo.password"
+                  type="password"
+                  label="Password"
+                />
+
+                <va-input
+                  class="mt-3"
+                  v-model="userInfo.status"
+                  label="Status"
+                />
+
+              </va-form>
+            </div>
+          </slot>
+          <template #footer>
+            <va-button @click="handleSubmit">
+              提交修改
+            </va-button>
+          </template>
+        </va-modal>
+      </va-card-content>
+    </va-card>
 
   </div>
+
+
 </template>
 
 <script>
-  export default {
+  import { defineComponent } from 'vue'
+
+  const defaultItem = {
+    id: null,
+    name: '',
+    status: null,
+    phone:''
+  }
+
+  export default defineComponent({
     data () {
 
+      const columns = [
+        { key: 'id', sortable: true },
+        { key: 'name', sortable: true },
+        { key: 'status', sortable: true },
+        { key: 'phone', sortable: true },
+        { key: 'actions', width: 80 },
+      ]
       return {
-        value: 3,
-        users:{},
+        users:[],
         useridInfo:1,
         userInfo:{
-          usernameInfo:"",
-          userpasswordInfo:"",
-          userstatusInfo: 0,
+          name:"",
+          password:"",
+          status: 0,
+        },
+        userAddInfo:{
+          name:"",
+          password:"",
+          status: 0,
+          phone:""
         },
         showModal: false,
+        columns,
+        createdItem: { ...defaultItem },
       }
     },
-    methods:{
+    computed: {
+      isNewData () {
+        return Object.keys(this.createdItem).every((key) => !!this.createdItem[key])
+      },
+    },
+
+
+    methods: {
       getAll(){
         this.axios.get("http://localhost:8081/user/list").then(res =>{
           console.log(res.data)
-          this.users=res.data.message.data
+          this.users=res.data.data
         })
       },
       onchange(id) {
+        console.log(id);
         this.showModal = !this.showModal
-        this.useridInfo = id
-        this.userInfo.usernameInfo = this.users[id].name
-        this.userInfo.userpasswordInfo = this.users[id].password
-        this.userInfo.userstatusInfo = this.users[id].status
+        this.useridInfo = this.users[id].id
+        this.userInfo.name = this.users[id].name
+        this.userInfo.password = this.users[id].password
+        this.userInfo.status = this.users[id].status
       },
       onDelete(id){
-        this.axios.post("http://localhost:8081/user/"+id).then(res =>{
+        this.axios.delete("http://localhost:8081/user/"+id).then(res =>{
           if(res.data.code===200){
             console.log("删除成功")
             this.getAll();
@@ -155,11 +176,12 @@
           }
         })
       },
+      /**修改*/
       handleSubmit (e) {
         alert('-- 提交成功 --')
-        this.axios.post("http://localhost:8081/user/"+this.useridInfo,this.userInfo).then(res =>{
-
-
+        this.axios.put("http://localhost:8081/user/"+this.useridInfo,this.userInfo).then(res =>{
+          console.log("返回了");
+          console.log(res.data);
         })
         this.showModal = !this.showModal
         this.userInfo.usernameInfo = ""
@@ -167,16 +189,40 @@
         this.userInfo.userstatusInfo = 0
         this.getAll();
       },
+      /*搜索*/
+      onsubmit(){
+        this.axios.post("http://localhost:8081/user/search",this.searchInfo).then(res=>{
+          this.users = res.data.data
+        })
+      },
+      handleAddSubmit(e){
+        alert('-- 提交成功 --')
+        this.axios.post("http://localhost:8081/user/new",this.createdItem).then(res =>{
+          console.log("返回了")
+          console.log(res.data)
+        })
+        this.showModal2 = !this.showModal2
+        this.userAddInfo.name = ""
+        this.userAddInfo.password = ""
+        this.userAddInfo.status = 0
+        this.userAddInfo.phone=""
+        this.getAll();
+      }
     },
     created() {
       this.getAll();
-    },
-
-  }
+    }
+  })
 </script>
 
 <style lang="scss" scoped>
-  .va-table-responsive {
-    overflow: auto;
+  .table-example--slot {
+    th {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      vertical-align: middle;
+    }
   }
 </style>
+
+

@@ -7,20 +7,22 @@ import App from "@/App.vue";
 
 export default createStore({
   strict: true, // process.env.NODE_ENV !== 'production',
+
   state: {
-    // isSidebarMinimized: false,
-    // userName: 'Vasili S',
+    isSidebarMinimized: false,
+    userName: 'Vasili S',
     token: '',
     // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
-    userInfo: JSON.parse(<string > sessionStorage.getItem("userInfo"))
+    userInfo: JSON.parse(<string > sessionStorage.getItem("userInfo")),
+    name:'WJC'
   },
   mutations: {
-    // updateSidebarCollapsedState(state, isSidebarMinimized) {
-    //   state.isSidebarMinimized = isSidebarMinimized
-    // },
-    // changeUserName(state, newUserName) {
-    //   state.userName = newUserName
-    // }
+    updateSidebarCollapsedState(state, isSidebarMinimized) {
+      state.isSidebarMinimized = isSidebarMinimized
+    },
+    changeUserName(state, newUserName) {
+      state.userName = newUserName
+    },
     SET_TOKEN:(state, token) => {
       state.token = token
       localStorage.setItem("token",token)//保存到本地缓存

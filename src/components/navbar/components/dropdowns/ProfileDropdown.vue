@@ -25,8 +25,8 @@
           :to="{name: option.redirectTo}"
           class="profile-dropdown__item"
         >
-          {{ $t(`user.${option.name}`) }}
-        </router-link>          
+          {{ $t(`${option.name}`) }}
+        </router-link>
       </va-list-item>
     </va-dropdown-content>
   </va-dropdown>
@@ -47,7 +47,15 @@ export default {
       type: Array,
       default: () => [
         {
-          name: 'profile',
+          name: '管理员页',
+          redirectTo: '',
+        },
+        {
+          name: '后厨页',
+          redirectTo: '',
+        },
+        {
+          name: '前台服务员页',
           redirectTo: '',
         },
         {
