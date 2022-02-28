@@ -82,6 +82,11 @@
       </div>
     </va-modal>
 
+
+
+
+
+
     <div class="row row-equal">
       <div class="flex xs12 lg4" v-for="meal in meals" :key="meal.id">
         <va-card>
@@ -114,16 +119,12 @@
 </template>
 
 <script>
-  import MealDetail from './MealDetail.vue'
-  import AddMeal from './AddMeal.vue'
-  import {computed} from "vue";
-  import {useStore} from "vuex";
 
   export default {
     name: 'form-wizard',
-    components: {
+/*    components: {
       MealDetail,
-    },
+    },*/
     data() {
       return {
         meals: {},
@@ -174,10 +175,10 @@
         else {this.addmeal.isGood = 0;}
         this.axios.post("http://localhost:8081/meal/",this.addmeal).then(res=>{
           console.log(res.data)
-
+          this.addMeal = !this.addMeal;
           this.getAll();
         })
-        this.addMeal = !this.addMeal;
+
       }
     },
     created() {
