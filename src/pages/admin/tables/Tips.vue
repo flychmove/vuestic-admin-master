@@ -5,21 +5,25 @@
         <va-card-content>
           <h1 style="font-size: large">写公告</h1>
           <va-card-actions align="between">
-            <va-input
-              v-model="tipsContent"
-              type="textarea"
-              autosize
-            />
+            <div style="width: 100%">
+              <va-input
+                class="mb-4"
+                v-model="noticeTitleWrite"
+              >
+                <template #prepend>
+                  <va-h1 style="width: 5rem">公告标题</va-h1>
+                </template>
+              </va-input>
+              <va-input
+                v-model="tipsContent"
+                type="textarea"
+                autosize
+              />
+            </div>
             <va-card class="flex xs12 lg2">
               <va-card-content>
                 <va-h1 style="font-size: large">发送给:</va-h1>
                 <div class="mb-4">{{ selection }}</div>
-                <va-checkbox
-                  v-model="selection"
-                  array-value="all-people"
-                  style="margin-top: 5px"
-                  label="所有人"
-                />
                 <va-checkbox
                   v-model="selection"
                   array-value="manager"
@@ -54,36 +58,65 @@
       <va-button style="font-size: large;" @click="more">更多</va-button>
 
       <div class="row row-equal">
-        <div class="flex xs12 lg4" v-for="meal in meals" :key="meal.id">
+        <div class="flex xs12 lg4" v-for="count in 3">
           <va-card>
             <va-card-title>
-              <va-modal v-model="mealDetail" :overlay="false"
-                hide-default-actions
-                no-outside-dismiss size="large">
-                <meal-detail/>
-              </va-modal>
+              {{notices.title}}
             </va-card-title>
-          </va-card>
-        </div>
+            <va-modal v-model="tipsDetail" :message="tipsDetailMessage"
+                      :overlay="false" ok-text="确定" cancel-text="取消"
+                      no-outside-dismiss size="large">
 
-        <div class="flex xs12 lg4">
-          <va-card>
-            <va-modal v-model="mealDetail" :overlay="false"
-              hide-default-actions
-              no-outside-dismiss size="large">
-              <meal-detail/>
+              <div class="noticeDetail" style="width: 100%">
+                <div class="title" style="width: 100%">
+                  <va-input
+                    class="mb-4"
+                    v-model="noticeTitle"
+                  >
+                    <template #prepend>
+                      <va-h1 style="width: 5rem">公告标题</va-h1>
+                    </template>
+                  </va-input>
+                </div>
+                <div class="row row-equal">
+                  <div class="flex xs12 lg6">
+                    <va-input
+                      class="mb-4"
+                      v-model="noticeOrder"
+                    >
+                      <template #prepend>
+                        <va-h1 style="width: 3rem">发送者</va-h1>
+                      </template>
+                    </va-input>
+                  </div>
+                  <div class="flex xs12 lg6">
+                    <va-input
+                      class="mb-4"
+                      v-model="noticeTime"
+                    >
+                      <template #prepend>
+                        <va-h1 style="width: 2rem">时间</va-h1>
+                      </template>
+                    </va-input>
+                  </div>
+                </div>
+                <div>
+                  <va-input
+                    class="mb-4"
+                    v-model="noticeContent"
+                    type="textarea"
+                    autosize
+                  >
+                    <template #prepend>
+                      <va-h1 style="width: 5rem">公告内容</va-h1>
+                    </template>
+                  </va-input>
+                </div>
+              </div>
+
             </va-modal>
-            <va-card-title>
-              测试部分
-            </va-card-title>
             <va-card-actions align="stretch" vertical>
               <va-button @click="tipsDetail = !tipsDetail">详情</va-button>
-              <va-modal v-model="tipsDetail" :message="tipsDetailMessage"
-                :overlay="false"
-                hide-default-actions
-                no-outside-dismiss size="large">
-                neirong
-              </va-modal>
             </va-card-actions>
           </va-card>
         </div>
@@ -98,15 +131,16 @@
     name: 'tips',
     data() {
       return {
+        noticeTitleWrite: '',
         tipsContent: '',
-        selection: ["all-people"],
+        selection: ["manager"],
         tipsDetail: false,
+        notices: {},
 
-        meals: {},
-        addMeal: false,
-        mealDetail: false,
-        deleteMeal: false,
-        deleteMessage: "是否确定删除该菜品?",
+        noticeTitle: '',
+        noticeOrder: '',
+        noticeTime: '',
+        noticeContent: '',
       }
     },
     methods: {
@@ -117,8 +151,8 @@
         })
       },
       onselect() {
-        this.axios.post("http://localhost:8081/meal/search", this.searchInfo).then(res => {
-          console.log(this.searchInfo)
+        this.axios.post("http://localhost:8081/meal/search", this.notices).then(res => {
+          console.log(this.notices)
           this.meals = res.data.data
         })
       },
