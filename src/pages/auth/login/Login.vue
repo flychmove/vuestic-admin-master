@@ -86,8 +86,6 @@ export default {
 
       })
 
-      this.$router.push({ name: 'dashboard' })
-
       // console.log(this.$store.getters.getUser)
     }       // this.$router.push({ name: 'dashboard' })
   }

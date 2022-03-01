@@ -1,8 +1,6 @@
 <template>
   <div class="form-wizard">
     <va-affix :offset-top="95">
-
-      <div>
         <va-card style="width: 100%">
 
           <va-card-content>
